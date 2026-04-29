@@ -36,7 +36,7 @@ const title = `CV - ${personalInfo.name}`;
             <a href={`mailto:${personalInfo.email}`} class="btn btn-primary btn-lg shadow-lg hover:scale-105 transition-all font-black text-lg px-8 rounded-xl">
               CONTACTAR
             </a>
-            <a href={personalInfo.github} target="_blank" class="btn btn-outline btn-lg border-2 hover:scale-105 transition-all font-black text-lg px-8 rounded-xl">
+            <a href={`https://github.com/${personalInfo.github}`} target="_blank" class="btn btn-outline btn-lg border-2 hover:scale-105 transition-all font-black text-lg px-8 rounded-xl">
               GITHUB
             </a>
           </div>
@@ -89,7 +89,7 @@ const title = `CV - ${personalInfo.name}`;
           </div>
           <div>
             <p class="text-xs font-black uppercase tracking-widest opacity-40 mb-1">GitHub</p>
-            <a href={personalInfo.github} target="_blank" class="font-bold text-lg hover:text-primary transition-colors leading-tight decoration-primary/30 underline-offset-4 hover:underline">{personalInfo.github}</a>
+            <a href={`https://github.com/${personalInfo.github}`} target="_blank" class="font-bold text-lg hover:text-primary transition-colors leading-tight decoration-primary/30 underline-offset-4 hover:underline">{personalInfo.github}</a>
           </div>
         </div>
       </div>
