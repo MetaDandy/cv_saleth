@@ -1,104 +1,112 @@
 export const personalInfo = {
-  name: "Joseph Benitez Arroyo",
-  summary: "Estudiante de Ingeniería en Sistemas (9no semestre) con experiencia profesional como desarrollador Full Stack. Especializado en Go, React, y NestJS, con enfoque en arquitecturas escalables, orquestación de microservicios y desarrollo backend orientado a eventos.",
-  role: "Full Stack Developer | Go & React Specialist",
-  email: "benitezarroyojoseph@gmail.com",
-  phone: "+591 65933751",
+  name: "Saleth Jhoselin Mamani Huanca",
+  summary: "Ingeniera de Sistemas con experiencia como desarrolladora Full-Stack en el sector Fintech. Especializada en React, TypeScript y PostgreSQL, con enfoque en arquitecturas serverless, optimización de datos y desarrollo cloud. Actualmente profundizando en el ecosistema Web3 (Solidity/Foundry) y Finanzas Descentralizadas.",
+  role: "Full Stack Developer | React & TypeScript Specialist",
+  email: "mamjhoss@gmail.com",
+  phone: "+591 64539166",
   location: "Santa Cruz, Bolivia",
-  github: "https://github.com/MetaDandy"
+  github: "SalethxJhoselin", // No especificado en el CV
+  linkedin: "" // No especificado en el CV
 };
 
 export const experiences = [
   {
-    company: "Eicap",
-    role: "Desarrollador Full Stack",
-    period: "Julio 2025 - Actualidad",
-    description: "Participación en la planificación, arquitectura y desarrollo de una aplicación de escritorio contable construida con Wails (Go + React).",
+    company: "WABI SRL",
+    role: "Analista de Desarrollo / Full-Stack",
+    period: "Julio 2025 - Abril 2026",
+    description: "Participación en el desarrollo de soluciones fintech enfocadas en manejo de billeteras digitales.",
     responsibilities: [
-      "Diseño y desarrollo de módulos clave como cotizaciones, libro mayor y balance general.",
-      "Implementación de servidor de autenticación independiente mediante sistema de keys/licenciamiento.",
-      "Migración de modelo de datos y DTOs para compatibilidad tipada entre Go y React.",
-      "Diseño e implementación del módulo de Inventarios."
+      "Liderazgo en el desarrollo del módulo Wallet, implementando flujos de retención y retiro de fondos.",
+      "Diseño de arquitectura serverless utilizando AWS Lambda y Step Functions.",
+      "Implementación de infraestructura como código con Terraform.",
+      "Optimización de procesos de datos mediante procedimientos almacenados."
     ],
-    technologies: ["Go", "Wails", "React", "TypeScript", "Tailwind CSS", "SQLite"]
+    technologies: ["React", "TypeScript", "PostgreSQL", "AWS Lambda", "Step Functions", "Terraform"]
   },
   {
-    company: "Multicenter",
-    role: "Desarrollador Frontend",
-    period: "Octubre 2025 - Febrero 2026",
-    description: "Desarrollo de un sistema POS web orientado a la gestión de ventas en sucursales físicas.",
+    company: "Autorepuestos POLI",
+    role: "Desarrollador Frontend & Responsable de Proyecto (Freelance)",
+    period: "Diciembre 2024 - Abril 2025",
+    description: "Desarrollo completo de sistema de gestión para negocio de autorepuestos.",
     responsibilities: [
-      "Desarrollo y mantenimiento del frontend utilizando React + TypeScript.",
-      "Implementación de manejo de estado global con Zustand.",
-      "Integración con APIs REST protegidas mediante JWT.",
-      "Integración con dispositivos externos (impresoras térmicas, lectores de barras)."
+      "Análisis funcional y relevamiento de requerimientos con el cliente.",
+      "Diseño UX/UI del sistema.",
+      "Desarrollo full-stack de la aplicación.",
+      "Despliegue en producción y soporte.",
+      "Gestión de comunicación directa con el cliente durante todo el ciclo de vida del proyecto."
     ],
-    technologies: ["React", "TypeScript", "Zustand", "Tailwind CSS", "shadcn/ui"]
+    technologies: ["React", "TypeScript", "PostgreSQL"]
   },
   {
-    company: "Wabi",
-    role: "Consultor en Desarrollo",
-    period: "Julio - Octubre 2025",
-    description: "Reestructuración e implementación de múltiples módulos del ecosistema Wabi y Customer Hub.",
+    company: "MECTEL SRL",
+    role: "Asistente de Ingeniería",
+    period: "Julio 2023 - Diciembre 2023",
+    description: "Soporte en proyectos de telecomunicaciones e infraestructura técnica.",
     responsibilities: [
-      "Diseño e implementación del módulo Customer Hub utilizando NestJS con Sequelize.",
-      "Desarrollo de servicios para administración de clientes, billeteras y bancos.",
-      "Implementación y mantenimiento de Lambda Payments para métodos de pago (QR, tarjeta, transferencia).",
-      "Aseguramiento de integración Core-Workers y estandarización de APIs REST."
+      "Elaboración de diseños de ingeniería para instalaciones de antenas repetidoras.",
+      "Colaboración en instalaciones técnicas.",
+      "Trabajo con equipos multidisciplinarios."
     ],
-    technologies: ["NestJS", "Node.js", "Sequelize", "AWS Lambdas", "PostgreSQL", "TypeScript"]
-  },
-  {
-    company: "Dyra Travel",
-    role: "Desarrollador Full Stack (Freelance)",
-    period: "Enero - Julio 2025",
-    description: "Implementación de sistemas de scraping y gestión de paquetes turísticos.",
-    responsibilities: [
-      "Sistema de web scraping con Puppeteer para extracción de datos.",
-      "Desarrollo de endpoints en Node.js para gestión de paquetes.",
-      "Mejora de widget en Zoho CRM para tracking de clientes."
-    ],
-    technologies: ["React", "Node.js", "Puppeteer", "Zoho CRM"]
+    technologies: ["Telecomunicaciones", "Diseño Técnico"]
   }
 ];
 
 export const projects = [
   {
-    title: "Cuent AI Core",
-    description: "Plataforma de Generación de Contenido con IA (Proyecto Universitario). Generación de audio/video con IA.",
-    highlights: ["Integración Google Gemini & ElevenLabs", "Procesamiento con FFmpeg", "Arquitectura Dockerizada"],
-    technologies: ["Go", "Fiber", "Google Gemini API", "ElevenLabs API", "Supabase", "FFmpeg", "WebSockets", "Docker"]
-  },
-  {
-    title: "E-commerce Autorepuestos",
-    description: "Backend para gestión de inventario de autorepuestos.",
-    highlights: ["Screaming Architecture", "Real-time updates", "Auth system"],
-    technologies: ["NestJS", "TypeScript", "Supabase", "PostgreSQL", "Next.js"]
-  },
-  {
-    title: "MaquetAngular",
-    description: "Demostración de versatilidad en diferentes frameworks frontend.",
-    highlights: ["Frontend Angular", "Backend Go"],
-    technologies: ["Angular", "TypeScript", "Go"]
+    title: "Sistema de Gestión de Autorepuestos",
+    description: "Sistema completo para la gestión de inventario y operaciones de un negocio de autorepuestos.",
+    highlights: [
+      "Desarrollo full-stack desde cero",
+      "Implementación de UX/UI personalizado",
+      "Gestión completa del ciclo del proyecto",
+      "Despliegue en producción"
+    ],
+    technologies: ["React", "TypeScript", "PostgreSQL"]
   }
 ];
 
 export const education = [
   {
     degree: "Ingeniería en Sistemas",
-    institution: "Universidad Autónoma Gabriel René Moreno",
-    period: "2021 - 2026 (9no semestre)"
+    institution: "Universidad Autónoma Gabriel René Moreno (FICCT)",
+    period: "Egresado"
+  },
+  {
+    degree: "Técnico Superior en Electrónica",
+    institution: "Instituto Tecnológico Santa Cruz",
+    period: "Graduado"
+  },
+  {
+    degree: "Curso de Finanzas Descentralizadas (DeFi) & Web3",
+    institution: "Formación especializada",
+    period: "Actual",
+    details: [
+      "Estudio de AMMs (Uniswap v4)",
+      "Desarrollo de Hooks personalizados",
+      "Uso de Foundry para Smart Contracts (Solidity)"
+    ]
   }
 ];
 
 export const skills = {
-  languages: ["Go", "TypeScript", "JavaScript", "SQL", "Bash"],
-  frameworks: ["Fiber", "NestJS", "React", "Next.js", "Angular", "Express"],
-  databases: ["PostgreSQL", "SQLite", "MongoDB", "Supabase"],
-  tools: ["Docker", "Docker Compose", "Git", "AWS Lambdas", "Puppeteer", "FFmpeg", "Linux (Arch)"]
+  languages: ["TypeScript", "JavaScript", "Python", "Java", "SQL"],
+  frameworks: ["React", "Angular", "NestJS", "Django", "Spring Boot", "Flutter"],
+  databases: ["PostgreSQL", "Oracle", "Supabase", "Neon"],
+  tools: [
+    "AWS Lambda",
+    "AWS Step Functions",
+    "Terraform",
+    "CI/CD",
+    "Bitbucket Pipelines",
+    "WebSockets",
+    "Postman",
+    "Swagger",
+    "Jira",
+    "Foundry"
+  ]
 };
 
 export const languages = [
   { language: "Español", level: "Nativo" },
-  { language: "Inglés", level: "Intermedio (Técnico)" }
+  { language: "Inglés", level: "B1 (Intermedio)" }
 ];

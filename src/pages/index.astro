@@ -3,7 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Section from "@components/Section.astro";
 import Card from "@components/Card.astro";
 import { personalInfo, experiences, projects, education, skills, languages } from "@shared/cv_data";
-import avatar from "@assets/core/avatar.jpg";
+import avatar from "@assets/core/avatar.jpeg";
 import { Image } from "astro:assets";
 
 const title = `CV - ${personalInfo.name}`;
@@ -89,7 +89,7 @@ const title = `CV - ${personalInfo.name}`;
           </div>
           <div>
             <p class="text-xs font-black uppercase tracking-widest opacity-40 mb-1">GitHub</p>
-            <a href={personalInfo.github} target="_blank" class="font-bold text-lg hover:text-primary transition-colors leading-tight decoration-primary/30 underline-offset-4 hover:underline">MetaDandy</a>
+            <a href={personalInfo.github} target="_blank" class="font-bold text-lg hover:text-primary transition-colors leading-tight decoration-primary/30 underline-offset-4 hover:underline">{personalInfo.github}</a>
           </div>
         </div>
       </div>
