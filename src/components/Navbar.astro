@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import ThemeController from './theme/Controller.theme.astro';
+
+interface NavLink {
+  label: string;
+  href: string;
+  subLinks?: NavLink[];
+}
+
+interface Props {
+  logo?: ImageMetadata;
+  logoText?: string;
+  navLinks?: NavLink[];
+  primaryCTAText?: string;
+  primaryCTALink?: string;
+  sticky?: boolean;
+  themeMode?: 'switcher' | 'controller';
+  layout?: 'between' | 'center' | 'end';
+}
+
+const {
+  logo,
+  navLinks = [
+    { label: 'Home', href: '#' },
+    { label: 'About', href: '#' },
+    { label: 'Services', href: '#' },
+    { label: 'Contact', href: '#' },
+  ],
+  primaryCTAText,
+  primaryCTALink = '#',
+  sticky = true,
+  layout = 'between',
+} = Astro.props;
+
+const stickyClass = sticky ? 'sticky top-0 z-50' : '';
+---
+
+<div class={`navbar bg-base-100 shadow-md ${stickyClass} flex-row justify-between px-2 sm:px-4`}>
+  <!-- Brand / Logo -->
+  <div class="flex-none md:flex-1 flex justify-start">
+    <a href="/" class="btn btn-ghost text-lg font-bold normal-case px-2 h-12">
+      {logo && <Image src={logo} alt="Logo" height={40} width={40} loading="eager" class="h-10 w-10 rounded-full object-cover invert-0 dark:invert-0 [data-theme=light]:invert-[1] [data-theme=jundep_light]:invert-[1] grayscale brightness-0 dark:grayscale-0 dark:brightness-100" />}
+    </a>
+  </div>
+  
+  <!-- Navigation Links (Desktop only) -->
+  <div class={`hidden md:flex ${layout === 'center' ? 'flex-2 justify-center' : 'flex-none'}`}>
+    <div class="flex gap-1 lg:gap-2">
+      {navLinks.map((link) => (
+        link.subLinks ? (
+          <div class="dropdown dropdown-hover">
+            <a href={link.href} tabindex="0" class="btn btn-ghost btn-sm lg:btn-md capitalize flex items-center gap-1">
+              {link.label}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <ul tabindex="0" class="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-56 border border-base-content/10">
+              {link.subLinks.map((sub) => (
+                <li>
+                  <a href={sub.href} class="text-sm py-2">
+                    {sub.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <a href={link.href} class="btn btn-ghost btn-sm lg:btn-md capitalize">
+            {link.label}
+          </a>
+        )
+      ))}
+    </div>
+  </div>
+
+  <!-- Actions (Theme & Mobile Menu) -->
+  <div class="flex-none md:flex-1 flex items-center justify-end gap-1">
+    <div class="flex items-center">
+      <ThemeController />
+    </div>
+
+    {primaryCTAText && (
+      <div class="hidden sm:block">
+        <a href={primaryCTALink} class="btn btn-primary btn-sm">
+          {primaryCTAText}
+        </a>
+      </div>
+    )}
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <div class="dropdown dropdown-end">
+        <button tabindex="0" class="btn btn-ghost btn-circle btn-sm" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <ul tabindex="0" class="dropdown-content z-100 menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+          {navLinks.map((link) => (
+            link.subLinks ? (
+              <li>
+                <details>
+                  <summary class="capitalize">{link.label}</summary>
+                  <ul>
+                    {link.subLinks.map((sub) => (
+                      <li><a href={sub.href}>{sub.label}</a></li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ) : (
+              <li><a href={link.href} class="capitalize">{link.label}</a></li>
+            )
+          ))}
+          {primaryCTAText && (
+            <li><a href={primaryCTALink}>{primaryCTAText}</a></li>
+          )}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

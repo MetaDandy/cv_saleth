@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import type { Network } from '@type/network';
+
+import whatsappImg from '@assets/social/whatsapp.png';
+import facebookImg from '@assets/social/facebook.png';
+import instagramImg from '@assets/social/instagram.png';
+import tiktokImg from '@assets/social/tiktok.png';
+import twitterImg from '@assets/core/boterito.jpg'; // Fallback
+import linkedinImg from '@assets/core/boterito.jpg'; // Fallback
+
+interface Props {
+  network: Network;
+  href: string;
+  label?: string;
+  size?: 'sm' | 'md' | 'lg';
+  showLabel?: boolean;
+  variant?: 'white' | 'primary' | 'secondary' | 'ghost';
+}
+
+const {
+  network,
+  href,
+  label,
+  size = 'md',
+  showLabel = true,
+  variant = 'white',
+} = Astro.props;
+
+const networkConfig = {
+  whatsapp: {
+    defaultLabel: 'WhatsApp',
+    image: whatsappImg,
+  },
+  facebook: {
+    defaultLabel: 'Facebook',
+    image: facebookImg,
+  },
+  instagram: {
+    defaultLabel: 'Instagram',
+    image: instagramImg,
+  },
+  twitter: {
+    defaultLabel: 'Twitter',
+    image: twitterImg,
+  },
+  linkedin: {
+    defaultLabel: 'LinkedIn',
+    image: linkedinImg,
+  },
+  tiktok: {
+    defaultLabel: 'TikTok',
+    image: tiktokImg,
+  }
+};
+
+
+const config = networkConfig[network];
+const displayLabel = label || config.defaultLabel;
+
+const sizeClasses = {
+  sm: 'w-10 h-10',
+  md: 'w-12 h-12',
+  lg: 'w-16 h-16',
+};
+
+const withLabelClasses = {
+  sm: 'px-4 py-2 w-auto h-auto',
+  md: 'px-5 py-2.5 w-auto h-auto',
+  lg: 'px-6 py-3 w-auto h-auto',
+};
+
+const iconSizeClasses = {
+  sm: 'w-6 h-6',
+  md: 'w-8 h-8',
+  lg: 'w-10 h-10',
+};
+
+const variantClasses = {
+  white: 'bg-white shadow-xl hover:bg-gray-50 text-gray-700',
+  primary: 'bg-primary shadow-xl hover:bg-primary-focus text-primary-content',
+  secondary: 'bg-secondary shadow-xl hover:bg-secondary-focus text-secondary-content',
+  ghost: 'bg-transparent hover:bg-base-200 text-base-content',
+};
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`inline-flex items-center justify-center rounded-full transition-all duration-300 transform hover:scale-110 ${variantClasses[variant]} ${showLabel ? withLabelClasses[size] : sizeClasses[size]}`}
+  aria-label={displayLabel}
+>
+  <Image 
+    src={config.image} 
+    alt={displayLabel}
+    width={64}
+    height={64}
+    loading="eager"
+    class={`${iconSizeClasses[size]} object-contain shrink-0`}
+  />
+  {showLabel && <span class="ml-4 font-medium">{displayLabel}</span>}
+</a>

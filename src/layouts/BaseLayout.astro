@@ -1,0 +1,58 @@
+---
+import "../styles/globals.css";
+import Navbar from "@components/Navbar.astro";
+import logo from "@assets/core/boterito.jpg";
+import Fab from "@components/social/Fab.social.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  showNavbar?: boolean;
+  showFooter?: boolean;
+  navbarLinks?: Array<{ label: string; href: string }>;
+}
+
+const {
+  title,
+  description = "Your Amazing Company",
+  showNavbar = true,
+  navbarLinks = [
+    { label: "Inicio", href: "#top" },
+    { label: "Experiencia", href: "#experience" },
+    { label: "Proyectos", href: "#projects" },
+    { label: "Habilidades", href: "#skills" },
+    { label: "Educación", href: "#education" },
+  ],
+} = Astro.props;
+---
+
+<html lang="es" data-theme="halloween">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={logo.src} />
+    <link rel="icon" type="image/png" href={logo.src} />
+    <link rel="apple-touch-icon" href={logo.src} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    {
+      showNavbar && (
+        <Navbar
+          logo={logo}
+          navLinks={navbarLinks}
+          layout="center"
+        />
+      )
+    }
+
+    <main>
+      <slot />
+    </main>
+
+    <Fab network="whatsapp" href="https://wa.me/65933751" />
+  </body>
+  <script src="../scripts/scroll-animations.js"></script>
+</html>

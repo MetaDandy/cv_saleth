@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title?: string;
+  description?: string;
+  items?: string[];
+  icon?: string;
+  image?: ImageMetadata;
+  href?: string;
+  badge?: string;
+  variant?: 'default' | 'compact' | 'bordered';
+}
+
+const {
+  title,
+  description,
+  items,
+  icon,
+  image,
+  href,
+  badge,
+  variant = 'default' as const
+} = Astro.props;
+
+const modalId = image ? `modal-${Math.random().toString(36).substring(2, 9)}` : "";
+const variantClasses: Record<string, string> = {
+  default: "card-bordered shadow-md hover:shadow-lg",
+  compact: "card-bordered",
+  bordered: "card-bordered border-2 border-base-300"
+};
+const cardClasses = `card ${variantClasses[variant] || 'card-bordered'} transition-all duration-300 bg-base-100`;
+const Element = href ? "a" : "div";
+---
+
+{image && <dialog id={modalId} class="modal"><div class="modal-box text-left">{image && <Image src={image} alt={title || ""} width={1000} height={400} />}{title && <h3 class="font-bold text-lg mt-4">{title}</h3>}{items && <ul class="py-4">{items.map((it: string) => <li>{it}</li>)}</ul>}</div><form method="dialog" class="modal-backdrop"><button>close</button></form></dialog>}
+
+<Element class={`${cardClasses} ${href ? "cursor-pointer hover:shadow-xl" : ""} animate-scale-in`} href={href}>
+  {image && (
+    <figure class="overflow-hidden h-48 bg-base-200 cursor-pointer" onclick={`document.getElementById('${modalId}').showModal()`}>
+      <Image src={image} alt={title || ""} width={400} height={200} class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+    </figure>
+  )}
+  {badge && <div class="absolute top-4 right-4 badge badge-primary">{badge}</div>}
+  <div class="card-body">
+    {icon && <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-2xl text-primary">{icon}</div>}
+    {title && <h2 class="card-title text-lg">{title}</h2>}
+    {description && <p class="text-base-content/70 text-sm leading-relaxed mb-1">{description}</p>}
+    {items && items.length > 0 && (
+      <ul class="text-sm leading-relaxed text-base-content/80 space-y-1 my-2">
+        {items.map((item: string) => (
+          <li class="flex items-start gap-2">
+            <span class="text-primary mt-1">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+    <slot />
+  </div>
+</Element>

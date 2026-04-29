@@ -1,0 +1,14 @@
+---
+const { id, title, className = "" } = Astro.props;
+---
+<section id={id} class={`py-20 ${className} scroll-target`}>
+  <div class="max-w-6xl mx-auto px-4 text-base-content text-center">
+    {title && (
+      <div class="mb-16 font-black uppercase tracking-tight">
+        <h2 class="text-4xl md:text-5xl mb-4">{title}</h2>
+        <div class="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
+      </div>
+    )}
+    <slot />
+  </div>
+</section>
